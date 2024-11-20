@@ -18,10 +18,10 @@ const UpdateEvent = () => {
       try {
         const response = await fetch(`https://appiexamrecu.onrender.com/api/events/${id}`);
         const data = await response.json();
-        
-        // Transformar la fecha al formato YYYY-MM-DD si existe
-        const formattedDate = data.date ? data.date.split('T')[0] : '';
-        setEventData({ ...data, date: formattedDate }); // Cargar los datos del evento con la fecha formateada
+
+        // Usar la fecha tal como viene del servidor, sin transformarla
+        const formattedDate = data.date ? data.date.split('T')[0] : '';  // Asegurarse de tomar solo la parte de la fecha
+        setEventData({ ...data, date: formattedDate }); // Cargar los datos del evento con la fecha correcta
       } catch (error) {
         console.error('Error fetching event data:', error);
       }
@@ -110,8 +110,12 @@ const UpdateEvent = () => {
             </option>
           ))}
         </select>
-        <button className="btn btn-primary" onClick={handleUpdateEvent}>
+        <button className="btn btn-primary me-3" onClick={handleUpdateEvent}>
           Actualizar Evento
+        </button>
+        {/* Botón para regresar */}
+        <button className="btn btn-secondary" onClick={() => navigate(-1)}>
+          Regresar
         </button>
       </div>
     </div>
