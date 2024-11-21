@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EventsList from './components/EventsList';
 import UpdateEvent from './components/UpdateEvent';
 import EventAttendees from './components/EventAttendees';
+import './App.css';
+
 
 function App() {
   return (

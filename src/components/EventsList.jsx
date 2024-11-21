@@ -40,6 +40,9 @@ const EventsList = () => {
   });
   const [showAddAttendee, setShowAddAttendee] = useState(false);
 
+<div className="events-list-container">
+  {/* Contenido del componente */}
+</div>
 
 
   
