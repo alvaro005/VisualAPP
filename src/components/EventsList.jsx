@@ -40,9 +40,6 @@ const EventsList = () => {
   });
   const [showAddAttendee, setShowAddAttendee] = useState(false);
 
-<div className="events-list-container">
-  {/* Contenido del componente */}
-</div>
 
 
   
@@ -275,7 +272,18 @@ const EventsList = () => {
   return (
     <div>
       <div className="d-flex flex-column justify-content-center align-items-center my-5">
-        <button className="btn btn-info mb-3 w-50 shadow-sm rounded-pill" onClick={() => setShowEventMenu(!showEventMenu)}>
+        <button className="btn btn-info mb-3 w-50 shadow-sm rounded-pill" 
+        onClick={() => setShowEventMenu(!showEventMenu)}
+        style={{
+          backgroundColor: '#00b5de',
+          color: 'white',
+          padding: '10px 20px',
+          border: 'none',
+          borderRadius: '5px',
+          fontSize: '16px',
+          cursor: 'pointer',
+      }}
+        >
           {showEventMenu ? 'Ocultar Menú de Eventos' : 'Mostrar Menú de Eventos'}
         </button>
       </div>
@@ -287,6 +295,15 @@ const EventsList = () => {
               <button
                 className="btn btn-secondary mb-3 w-50 shadow-sm rounded-pill"
                 onClick={() => setShowEvents(!showEvents)}
+                style={{
+                  backgroundColor: '#00b5de',
+                  color: 'white',
+                  padding: '10px 20px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+              }}
               >
                 {showEvents ? 'Ocultar Eventos Existentes' : 'Eventos Existentes'}
               </button>
@@ -295,14 +312,24 @@ const EventsList = () => {
                 <button
                   className="btn btn-secondary mb-3 w-50 shadow-sm rounded-pill"
                   onClick={() => setShowEventTypes(!showEventTypes)}
+                  style={{
+                    backgroundColor: '#00b5de',
+                    color: 'white',
+                    padding: '10px 20px',
+                    border: 'none',
+                    borderRadius: '5px',
+                    fontSize: '16px',
+                    cursor: 'pointer',
+                }}
                 >
                   {showEventTypes ? 'Ocultar Tipos de Evento' : 'Tipos de Eventos'}
+                  
                 </button>
               </div>
 
               {showEventTypes && (
                 <div className="mb-4">
-                  <h4>Tipos de Eventos</h4>
+                  <h4 style={{ color: '#0ab0f3', fontWeight: 'bold' }}>Tipos de Eventos</h4>
                   <ul className="list-group">
                     {eventTypes.map((type) => (
                       <li key={type.id} className="list-group-item">
@@ -317,7 +344,17 @@ const EventsList = () => {
               <div>
                 <button
                   className="btn btn-secondary mb-3 w-50 shadow-sm rounded-pill"
-                  onClick={handleButtonClick}
+                  
+                  onClick={() => handleButtonClick(!handleButtonClick)}
+                  style={{
+                    backgroundColor: '#00b5de',
+                    color: 'white',
+                    padding: '10px 20px',
+                    border: 'none',
+                    borderRadius: '5px',
+                    fontSize: '16px',
+                    cursor: 'pointer',
+                }}
                 >
                   {showAssistants ? 'Ocultar Roles de Asistente' : 'Roles de Asistente'}
                 </button>
@@ -326,7 +363,7 @@ const EventsList = () => {
 
                 {showAssistants && !loading && assistants.length > 0 && (
                   <div>
-                    <h4>Roles Existentes</h4>
+                   <h4 style={{ color: '#0ab0f3', fontWeight: 'bold' }}>Roles Existentes</h4>
                     <ul className="list-group">
                       {assistants.map((assistant) => (
                         <li key={assistant.id} className="list-group-item">
@@ -340,7 +377,7 @@ const EventsList = () => {
                 )}
               </div>
             </div>
-            <h4>Crear Evento</h4>
+            <h4 style={{ color: '#0ab0f3', fontWeight: 'bold' }}>Creación de Eventos</h4>
             <div className="form-group">
               <input
                 type="text"
@@ -374,9 +411,6 @@ const EventsList = () => {
               >
 
 
-
-
-
                 <option value="">Seleccione el tipo de evento</option>
                 {eventTypes.map((type) => (
                   <option key={type.id} value={type.id}>
@@ -384,11 +418,13 @@ const EventsList = () => {
                   </option>
                 ))}
               </select>
-              <button className="btn btn-primary" onClick={handleCreateEvent}>
-                Crear Evento
+              <button className="btn btn-primary" 
+              onClick={handleCreateEvent}>
+                Crear
               </button>
+              
             </div>
-            <h4 className="mt-4">Eliminar Evento</h4>
+            <h4 style={{ color: '#0ab0f3', fontWeight: 'bold' }}>Eliminar Evento</h4>
             <div className="form-group">
               <input
                 type="text"
@@ -398,7 +434,7 @@ const EventsList = () => {
                 onChange={(e) => setDeleteEventId(e.target.value)}
               />
               <button className="btn btn-danger" onClick={handleDeleteEvent}>
-                Eliminar Evento
+                Eliminar 
               </button>
             </div>
           </div>

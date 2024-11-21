@@ -1,0 +1,19 @@
+body {
+    background-color: #00313d; /* Cambia este color a tu preferencia */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.list-group{
+    background-color: #04afbb;
+    color: rgb(3, 5, 5);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.list-group:hover {
+    background-color: #04dce4;
+}
+
+
