@@ -6,6 +6,8 @@ import AddAttendeeModal from './AddAttendeeModal'; // Modal para agregar asisten
 import UpdateAttendeeModal from './UpdateAttendeeModal'; // Modal para actualizar asistente
 import { FaEdit, FaTrashAlt, FaPlus } from 'react-icons/fa'; // Iconos de FontAwesome
 
+
+
 const EventAttendees = () => {
   const { id } = useParams(); // Obtener el ID del evento desde la URL
   const navigate = useNavigate();
@@ -160,21 +162,34 @@ const EventAttendees = () => {
   return (
     <div className="container mt-5">
       {/* Mostrar la información del evento */}
+      
       {event && (
         <div className="mb-4">
-          <h3 className="text-primary">{event.title}</h3>
-          <p>{event.description}</p>
-          <p><strong>Fecha:</strong> {new Date(event.date).toLocaleDateString()}</p>
+          {/* Color, tamaño y estilo del titulo */}
+          <h3 style={{ color: '#d7c808', fontWeight: 'bold', fontWeight: 'bold', fontSize: '3.0rem' }}>{event.title}</h3>
+          <p> {/* Color, tamaño y estilo de la descipcion Eventos */}
+          <p style={{ color: '#ffffff', fontWeight: 'bold', fontWeight: 'bold', fontSize: '2.0rem' }}>{event.description}</p>
+          </p>
+          
+          
+          {/* Fecha en apartado Asistentes del Evento*/}
+          <span style={{ color: '#d7c808', fontWeight: 'bold', fontSize: '1.1rem' }}>
+          {new Date(event.date).toLocaleDateString()}
+        </span>
         </div>
       )}
 
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h3 className="text-primary">Asistentes del Evento</h3>
+        <h3 style={{ color: '#d7c808', fontWeight: 'bold', fontSize: '1.8rem' }}>Asistentes del Evento</h3>
         <div className="d-flex flex-column flex-md-row gap-2">
-          <button className="btn btn-success w-100 w-md-auto" onClick={() => setShowModal(true)}>
-            <FaPlus className="me-2" /> Agregar Asistente
+
+          {/* Boton agregar asistente apartado de Asistentes a participar*/}
+          <button className="btn btn-success w-100 w-md-auto" 
+          onClick={() => setShowModal(true)}>
+            <FaPlus className="me-2" /> Agregar Asistentes
           </button>
-          <button className="btn btn-secondary w-100 w-md-auto" onClick={() => navigate(-1)}>
+          {/* w-100 tamaño boton*/}
+          <button className="btn btn-secondary w-99 w-md-auto" onClick={() => navigate(-1)}>
             Regresar
           </button>
         </div>

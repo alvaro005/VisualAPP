@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 
-
 const EventsList = () => {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
@@ -42,7 +41,7 @@ const EventsList = () => {
 
 
 
-  
+
   // Fetch events
   useEffect(() => {
     const fetchEvents = async () => {
@@ -104,7 +103,7 @@ const EventsList = () => {
 
     fetchEventTypes();
   }, []);
-  
+
 
   // Fetch roles
   useEffect(() => {
@@ -256,7 +255,7 @@ const EventsList = () => {
 
 
 
-  
+
   // Función que maneja el clic del botón
   const handleButtonClick = () => {
     if (!showAssistants) {
@@ -272,17 +271,17 @@ const EventsList = () => {
   return (
     <div>
       <div className="d-flex flex-column justify-content-center align-items-center my-5">
-        <button className="btn btn-info mb-3 w-50 shadow-sm rounded-pill" 
-        onClick={() => setShowEventMenu(!showEventMenu)}
-        style={{
-          backgroundColor: '#00b5de',
-          color: 'white',
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: '5px',
-          fontSize: '16px',
-          cursor: 'pointer',
-      }}
+        <button className="btn btn-info mb-3 w-50 shadow-sm rounded-pill"
+          onClick={() => setShowEventMenu(!showEventMenu)}
+          style={{
+            backgroundColor: '#00b5de',
+            color: 'white',
+            padding: '10px 20px',
+            border: 'none',
+            borderRadius: '5px',
+            fontSize: '16px',
+            cursor: 'pointer',
+          }}
         >
           {showEventMenu ? 'Ocultar Menú de Eventos' : 'Mostrar Menú de Eventos'}
         </button>
@@ -303,7 +302,7 @@ const EventsList = () => {
                   borderRadius: '5px',
                   fontSize: '16px',
                   cursor: 'pointer',
-              }}
+                }}
               >
                 {showEvents ? 'Ocultar Eventos Existentes' : 'Eventos Existentes'}
               </button>
@@ -320,10 +319,10 @@ const EventsList = () => {
                     borderRadius: '5px',
                     fontSize: '16px',
                     cursor: 'pointer',
-                }}
+                  }}
                 >
                   {showEventTypes ? 'Ocultar Tipos de Evento' : 'Tipos de Eventos'}
-                  
+
                 </button>
               </div>
 
@@ -344,7 +343,7 @@ const EventsList = () => {
               <div>
                 <button
                   className="btn btn-secondary mb-3 w-50 shadow-sm rounded-pill"
-                  
+
                   onClick={() => handleButtonClick(!handleButtonClick)}
                   style={{
                     backgroundColor: '#00b5de',
@@ -354,7 +353,7 @@ const EventsList = () => {
                     borderRadius: '5px',
                     fontSize: '16px',
                     cursor: 'pointer',
-                }}
+                  }}
                 >
                   {showAssistants ? 'Ocultar Roles de Asistente' : 'Roles de Asistente'}
                 </button>
@@ -363,7 +362,7 @@ const EventsList = () => {
 
                 {showAssistants && !loading && assistants.length > 0 && (
                   <div>
-                   <h4 style={{ color: '#0ab0f3', fontWeight: 'bold' }}>Roles Existentes</h4>
+                    <h4 style={{ color: '#0ab0f3', fontWeight: 'bold' }}>Roles Existentes</h4>
                     <ul className="list-group">
                       {assistants.map((assistant) => (
                         <li key={assistant.id} className="list-group-item">
@@ -377,7 +376,7 @@ const EventsList = () => {
                 )}
               </div>
             </div>
-            <h4 style={{ color: '#0ab0f3', fontWeight: 'bold' }}>Creación de Eventos</h4>
+            <h4 style={{ color: '#00b5de', fontWeight: 'bold' }}>Creación de Eventos</h4>
             <div className="form-group">
               <input
                 type="text"
@@ -418,13 +417,13 @@ const EventsList = () => {
                   </option>
                 ))}
               </select>
-              <button className="btn btn-primary" 
-              onClick={handleCreateEvent}>
+              <button className="btn btn-primary"
+                onClick={handleCreateEvent}>
                 Crear
               </button>
-              
+
             </div>
-            <h4 style={{ color: '#0ab0f3', fontWeight: 'bold' }}>Eliminar Evento</h4>
+            <h4 style={{ color: '#00b5de', fontWeight: 'bold' }}>Eliminar Evento</h4>
             <div className="form-group">
               <input
                 type="text"
@@ -433,8 +432,20 @@ const EventsList = () => {
                 value={deleteEventId}
                 onChange={(e) => setDeleteEventId(e.target.value)}
               />
-              <button className="btn btn-danger" onClick={handleDeleteEvent}>
-                Eliminar 
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  const confirmDelete = window.confirm(
+                    "¿Estás seguro de que deseas eliminar este evento? Esta acción no se puede deshacer."
+                  );
+                  if (confirmDelete) {
+                    handleDeleteEvent(); // Llamar la función de eliminación solo si se confirma
+                  }
+                }}
+              >
+                Eliminar
+
+
               </button>
             </div>
           </div>
@@ -451,6 +462,8 @@ const EventsList = () => {
                       <h5 className="card-title">{event.title}</h5>
                       <p className="card-text">{event.description}</p>
                       <p className="card-text">
+
+                        {/*informacion de los eventos a mostrar*/}
                         <strong>Fecha:</strong> {new Date(event.date).toLocaleDateString()}
                       </p>
                       <p className="card-text">
@@ -463,11 +476,13 @@ const EventsList = () => {
                         <button
                           className="btn btn-warning w-100 w-md-auto"
                           onClick={() => handleUpdateEvent(event.id)}
+
                         >
                           Actualizar Evento
                         </button>
                         <button
                           className="btn btn-info w-100 w-md-auto"
+
                           onClick={() => navigate(`/events/${event.id}/attendees`)}
                         >
                           Ver Asistentes
@@ -492,8 +507,10 @@ const EventsList = () => {
 
 
         {showAddAttendee && (
+          
           <div>
-            <h4>Agregar Asistente</h4>
+            {/* TEXTO TITULO AGREGAR ASISTE*/}
+            <h4 style={{ color: '#00b5de', fontWeight: 'bold', fontSize: '1.6rem' }}>Agregar Asistente</h4>
             <div className="form-group">
               <input
                 type="text"
