@@ -133,6 +133,12 @@ const EventAttendees = () => {
     }
   };
 
+
+
+
+
+
+  
   // Si está cargando, mostrar el spinner
   if (loading) {
     return (

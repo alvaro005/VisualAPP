@@ -23,3 +23,12 @@ body {
 }
 
 
+/* styles.css */
+body {
+  background-color: #0e3844; /* Cambia el color de fondo */
+  color: #ffffff; /* Cambia el color del texto */
+  font-family: 'Arial', sans-serif; /* Cambia el tipo de letra */
+}
+
+
+

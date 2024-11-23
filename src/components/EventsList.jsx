@@ -252,7 +252,29 @@ const EventsList = () => {
       setLoading(false);
     }
   };
-
+  const Navbar = () => {
+    return (
+      <nav style={styles.navbar}>
+        <ul style={styles.navList}>
+          <li style={styles.navItem}>
+            <a style={styles.navLink} href="#">
+              Inicio
+            </a>
+          </li>
+          <li style={styles.navItem}>
+            <a style={styles.navLink} href="#">
+              Eventos
+            </a>
+          </li>
+          <li style={styles.navItem}>
+            <a style={styles.navLink} href="#">
+              Contacto
+            </a>
+          </li>
+        </ul>
+      </nav>
+    );
+  };
 
 
 
@@ -376,7 +398,7 @@ const EventsList = () => {
                 )}
               </div>
             </div>
-            <h4 style={{ color: '#00b5de', fontWeight: 'bold' }}>Creación de Eventos</h4>
+            <h4 style={{ color: '#00b5de', fontWeight: 'bold' }}>Creación de ventos</h4>
             <div className="form-group">
               <input
                 type="text"
@@ -409,7 +431,7 @@ const EventsList = () => {
                 onChange={(e) => setNewEvent({ ...newEvent, eventTypeId: parseInt(e.target.value) })}
               >
 
-
+                {/*mensajes de cuadros para apartado de creacion events*/}
                 <option value="">Seleccione el tipo de evento</option>
                 {eventTypes.map((type) => (
                   <option key={type.id} value={type.id}>
@@ -418,7 +440,7 @@ const EventsList = () => {
                 ))}
               </select>
               <button className="btn btn-primary"
-                onClick={handleCreateEvent}>
+                onClick={handleCreateEvent}>  {/*Boton de agregar Evento*/}
                 Crear
               </button>
 
@@ -548,5 +570,7 @@ const EventsList = () => {
     </div>
   );
 };
+
+
 
 export default EventsList;
